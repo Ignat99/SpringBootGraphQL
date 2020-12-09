@@ -100,7 +100,7 @@ public class BootGraphqlApplication {
                     episode.getDescription(),
                     20,
                     episode.getPubDate().toString(),
-                    episode.getSourceName()
+                    episode.getEnclosure().getURL().toString()
                   )
                 );
 //                sleep(300000)

@@ -1,11 +1,11 @@
 package com.ochiengolanga.tuts.bootgraphql;
 
 import com.ochiengolanga.tuts.bootgraphql.domain.Author;
-import com.ochiengolanga.tuts.bootgraphql.domain.Book;
+import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
 //import com.ochiengolanga.tuts.bootgraphql.exception.GraphQLErrorAdapter;
 
 import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
-import com.ochiengolanga.tuts.bootgraphql.repository.BookRepository;
+import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 /*
 import com.ochiengolanga.tuts.bootgraphql.resolvers.BookResolver;
 import com.ochiengolanga.tuts.bootgraphql.resolvers.Query;
@@ -19,6 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 */
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /*
@@ -43,13 +44,20 @@ import com.icosillion.podengine.models.Episode;
 public class ScheduledTasks {
 
 
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(initialDelay=10000, fixedRate = 30000)
     public void checkRSS() {
 
 //      public void checkRSS_repo(AuthorRepository authorRepository, BookRepository bookRepository) {
 
-            Author author = new Author("Ignat", "Ignatov");
-//            authorRepository.save(author);
+//    @Autowired
+//        AuthorRepository authorRepository = new AutorRepository();
+
+        Author author = new Author("Ignat", "Ignatov");
+//        authorRepository.save(author);
+
+//    @Autowired
+//        FeedRepository feedRepository = new FeedRepository();
+
 
             System.out.printf(" - Time to cheсk \n");
         try{
