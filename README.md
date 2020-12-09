@@ -10,7 +10,6 @@ The software was built using the following tools/platforms:
 - [H2 Database](http://www.h2database.com/html/main.html) - Database that can be used as a library http://75.126.254.59:8080/h2-console/
 - [Lombok](https://projectlombok.org/) - Framework used to reduce boilerplate code
 - [SpringFox](http://springfox.github.io/springfox/) - Library used to generate Swagger Documentation and UI
-- [Maven](https://maven.apache.org/) - Just Maven!
 - [JUnit](https://junit.org/) - Used for tests
 - [AssertJ](http://joel-costigliola.github.io/assertj/) - assertThat() like a *PRO*
 - [Mockito](https://site.mockito.org/) - Mocking dependencies
