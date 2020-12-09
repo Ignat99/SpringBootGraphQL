@@ -1,13 +1,21 @@
+#A Feed GraphGL schema
 type Feed {
+#    Identificator of the item
     id: ID!
+#    Name of the RSS topic
     title: String!
+#    Content of topic
     description: String!
     itemCount: Int
+#    Date of publication
     pubdate: String!
+#    URL of the Pictures
     image: String!
 }
 
+#Show the all items of a feed
 extend type Query {
+#    Just example of items set
     findAllFeeds: [Feed]!
     countFeeds: Long!
 }
