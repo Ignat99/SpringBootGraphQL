@@ -2,10 +2,13 @@ package com.ochiengolanga.tuts.bootgraphql;
 
 import com.ochiengolanga.tuts.bootgraphql.domain.Author;
 import com.ochiengolanga.tuts.bootgraphql.domain.Book;
+import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
 import com.ochiengolanga.tuts.bootgraphql.exception.GraphQLErrorAdapter;
 import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
 import com.ochiengolanga.tuts.bootgraphql.repository.BookRepository;
 import com.ochiengolanga.tuts.bootgraphql.resolvers.BookResolver;
+import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
+import com.ochiengolanga.tuts.bootgraphql.resolvers.FeedResolver;
 import com.ochiengolanga.tuts.bootgraphql.resolvers.Query;
 import com.ochiengolanga.tuts.bootgraphql.utils.feign.JokesAPIService;
 import graphql.ExceptionWhileDataFetching;
@@ -68,8 +71,8 @@ public class BootGraphqlApplication {
     }
 
     @Bean
-    public Query query(JokesAPIService jokesAPIService, AuthorRepository authorRepository, BookRepository bookRepository) {
-        return new Query(jokesAPIService, authorRepository, bookRepository);
+    public Query query(JokesAPIService jokesAPIService, AuthorRepository authorRepository, BookRepository bookRepository, FeedRepository feedRepository) {
+        return new Query(jokesAPIService, authorRepository, bookRepository, feedRepository);
     }
 
     @Bean

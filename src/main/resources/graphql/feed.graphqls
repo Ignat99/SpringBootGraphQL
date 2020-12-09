@@ -1,0 +1,13 @@
+type Feed {
+    id: ID!
+    title: String!
+    description: String!
+    itemCount: Int
+    pubdate: String!
+    image: String!
+}
+
+extend type Query {
+    findAllFeeds: [Feed]!
+    countFeeds: Long!
+}
