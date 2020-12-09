@@ -62,6 +62,16 @@ SELECT * FROM FEED
 
 ## Test Coverage
 
+### SonarQube
+
+SonarQube console http://75.126.254.59:9000/dashboard?id=springbootgraphql
+
+For running sensor use command from project folder
+
+```sh
+../sonar-scanner/bin/sonar-scanner
+```
+
 I tried to focus on the application *CORE BUSINESS*, so not all the classes were not tested on purpose.
 
 ```sh
