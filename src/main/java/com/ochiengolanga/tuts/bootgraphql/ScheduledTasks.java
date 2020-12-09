@@ -19,7 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 */
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /*
@@ -44,7 +44,7 @@ import com.icosillion.podengine.models.Episode;
 public class ScheduledTasks {
 
 
-    @Scheduled(initialDelay=10000, fixedRate = 30000)
+    @Scheduled(initialDelay=10000, fixedRate = 300000)
     public void checkRSS() {
 
 //      public void checkRSS_repo(AuthorRepository authorRepository, BookRepository bookRepository) {

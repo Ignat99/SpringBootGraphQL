@@ -17,9 +17,14 @@ import graphql.servlet.GraphQLErrorHandler;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import javax.persistence.EntityManagerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +38,19 @@ import com.icosillion.podengine.models.Episode;
 @EnableFeignClients
 @SpringBootApplication
 @EnableScheduling
+@EnableTransactionManagement
 public class BootGraphqlApplication {
+
+    @Autowired
+    private EntityManagerFactory entityManagerFactory;
 
     public static void main(String[] args) {
         SpringApplication.run(BootGraphqlApplication.class, args);
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager(entityManagerFactory);
     }
 
     @Bean
