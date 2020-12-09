@@ -19,19 +19,19 @@ public class Feed {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @Column(name="feed_title", nullable = false)
+    @Column(name="feed_title", nullable = true)
     private String title;
 
-    @Column(name="feed_description", nullable = false)
+    @Column(length = 30000, name="feed_description", nullable = true)
     private String description;
 
-    @Column(name="feed_itemCount", nullable = false)
+    @Column(name="feed_itemCount", nullable = true)
     private int itemCount;
 
-    @Column(name="feed_pubdate", nullable = false)
+    @Column(name="feed_pubdate", nullable = true)
     private String pubdate;
 
-    @Column(name="feed_image", nullable = false)
+    @Column(name="feed_image", nullable = true)
     private String image;
 
     public Feed(String title, String description, int itemCount, String pubdate, String image) {

@@ -76,7 +76,7 @@ public class BootGraphqlApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository, FeedRepository feedRepository) {
         return (args) -> {
             Author author = new Author("Herbert", "Schildt");
             authorRepository.save(author);
@@ -92,8 +92,18 @@ public class BootGraphqlApplication {
             System.out.printf(" %s has %d episodes!\n", podcast.getTitle(), episodes.size());
 
             //List all episodes
-            for (Episode episode : episodes) {
+            for (Episode episode: episodes) {
                 System.out.println("- " + episode.getTitle());
+                feedRepository.save(
+                  new Feed(
+                    episode.getTitle(),
+                    episode.getDescription(),
+                    20,
+                    episode.getPubDate().toString(),
+                    episode.getSourceName()
+                  )
+                );
+//                sleep(300000)
             }
 
         };
