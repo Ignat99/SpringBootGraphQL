@@ -69,7 +69,7 @@ SonarQube console http://75.126.254.59:9000/dashboard?id=springbootgraphql
 For running sensor use command from project folder
 
 ```sh
-./gradlew jacoco
+./gradlew jacocoTestReport 
 ../sonar-scanner/bin/sonar-scanner
 ```
 
