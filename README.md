@@ -46,24 +46,20 @@ Documentation could be reached [HERE](http://localhost:8080/graphiql).
 
 ```sh
 {
-findAllAuthors {
-id
-firstName
-lastName
-}
-countAuthors
-countBooks
-findAllBooks {
-id
-title
-pageCount
-}
+  findAllFeeds {
+    id
+    title
+    description
+    pubdate
+  }
 }
 ```
 
 H2 database console http://75.126.254.59:8080/h2-console/
 
-
+```sh
+SELECT * FROM FEED 
+```
 
 ## Test Coverage
 
