@@ -7,7 +7,6 @@ import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 import com.ochiengolanga.tuts.bootgraphql.resolvers.FeedResolver;
 import com.ochiengolanga.tuts.bootgraphql.resolvers.Query;
-import com.ochiengolanga.tuts.bootgraphql.utils.feign.JokesAPIService;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.servlet.GraphQLErrorHandler;
@@ -76,16 +75,13 @@ public class BootGraphqlApplication {
     }
 
     @Bean
-    public Query query(JokesAPIService jokesAPIService, AuthorRepository authorRepository, FeedRepository feedRepository) {
-        return new Query(jokesAPIService, authorRepository, feedRepository);
+    public Query query(AuthorRepository authorRepository, FeedRepository feedRepository) {
+        return new Query(authorRepository, feedRepository);
     }
 
     @Bean
     public CommandLineRunner demo(AuthorRepository authorRepository, FeedRepository feedRepository) {
         return (args) -> {
-            Author author = new Author("Herbert", "Schildt");
-            authorRepository.save(author);
-
             //Download and parse the nos.nl RSS feed http://feeds.nos.nl/nosjournaal?format=xml
             Podcast podcast = new Podcast(new URL("http://feeds.nos.nl/nosjournaal?format=xml"));
 

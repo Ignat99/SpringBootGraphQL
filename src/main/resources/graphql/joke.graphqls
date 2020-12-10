@@ -1,8 +1,0 @@
-type Joke {
-    id: ID!
-    joke: String!
-}
-
-extend type Query {
-    findRandomJoke: Joke!
-}

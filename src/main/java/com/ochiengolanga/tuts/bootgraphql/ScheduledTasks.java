@@ -1,6 +1,6 @@
 package com.ochiengolanga.tuts.bootgraphql;
 
-import com.ochiengolanga.tuts.bootgraphql.domain.Author;
+//import com.ochiengolanga.tuts.bootgraphql.domain.Author;
 import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
 
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;

@@ -6,5 +6,5 @@ type Author {
 
 type Query {
     findAllAuthors: [Author]!
-    countAuthors: Long!
+#    countAuthors: Long!
 }
