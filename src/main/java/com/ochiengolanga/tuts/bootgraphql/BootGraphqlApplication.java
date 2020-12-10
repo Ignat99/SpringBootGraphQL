@@ -24,6 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
 import javax.persistence.EntityManagerFactory;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.net.URL;
 import com.icosillion.podengine.models.Podcast;
 import com.icosillion.podengine.models.Episode;
 
-
+//@Configuration(ProxyTransactionManagementConfiguration = false)
 @EnableFeignClients
 @SpringBootApplication
 @EnableScheduling

@@ -4,7 +4,7 @@ import com.ochiengolanga.tuts.bootgraphql.domain.Author;
 import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
 //import com.ochiengolanga.tuts.bootgraphql.exception.GraphQLErrorAdapter;
 
-import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
+//import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 /*
 import com.ochiengolanga.tuts.bootgraphql.resolvers.BookResolver;
@@ -21,6 +21,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /*
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -45,12 +47,13 @@ public class ScheduledTasks {
 
 
     @Scheduled(initialDelay=10000, fixedRate = 300000)
+    @Transactional(propagation=Propagation.REQUIRES_NEW)
     public void checkRSS() {
 
 //      public void checkRSS_repo(AuthorRepository authorRepository, BookRepository bookRepository) {
 
-//    @Autowired
-//        AuthorRepository authorRepository = new AutorRepository();
+//        @Autowired
+//        AuthorRepository authorRepository = new AuthorRepository();
 
         Author author = new Author("Ignat", "Ignatov");
 //        authorRepository.save(author);
