@@ -1,12 +1,10 @@
 package com.ochiengolanga.tuts.bootgraphql.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.ochiengolanga.tuts.bootgraphql.domain.Author;
-import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
+import com.ochiengolanga.tuts.bootgraphql.domain.entity.Author;
+import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
-
-import java.util.Optional;
 
 public class Query implements GraphQLQueryResolver {
 

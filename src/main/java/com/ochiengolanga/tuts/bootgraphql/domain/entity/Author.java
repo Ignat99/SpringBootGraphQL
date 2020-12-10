@@ -1,15 +1,18 @@
-package com.ochiengolanga.tuts.bootgraphql.domain;
+package com.ochiengolanga.tuts.bootgraphql.domain.entity;
 
+import java.io.Serializable;
 import lombok.*;
 
 import javax.persistence.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @Entity
-public class Author {
+@DynamicUpdate
+public class Author implements Serializable {
     @Id
     @Column(name="book_id", nullable = false)
     @GeneratedValue(strategy= GenerationType.AUTO)
