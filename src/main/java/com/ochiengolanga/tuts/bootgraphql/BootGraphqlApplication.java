@@ -24,7 +24,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
 import javax.persistence.EntityManagerFactory;
 
 import java.util.ArrayList;
@@ -35,7 +34,6 @@ import java.net.URL;
 import com.icosillion.podengine.models.Podcast;
 import com.icosillion.podengine.models.Episode;
 
-//@Configuration(ProxyTransactionManagementConfiguration = false)
 @EnableFeignClients
 @SpringBootApplication
 @EnableScheduling
@@ -99,7 +97,6 @@ public class BootGraphqlApplication {
             bookRepository.save(new Book("Java: A Beginner's Guide, Sixth Edition", "0071809252", 728, author));
             bookRepository.save(new Book("Scala: A Beginner's Guide, First Edition", "0071809253", 1728, author));
             //Download and parse the nos.nl RSS feed http://feeds.nos.nl/nosjournaal?format=xml
-//            Podcast podcast = new Podcast(new URL("https://www.relay.fm/cortex/feed"));
             Podcast podcast = new Podcast(new URL("http://feeds.nos.nl/nosjournaal?format=xml"));
 
             //Display Feed Details
@@ -118,7 +115,6 @@ public class BootGraphqlApplication {
                     episode.getEnclosure().getURL().toString()
                   )
                 );
-//                sleep(300000)
             }
 
         };
