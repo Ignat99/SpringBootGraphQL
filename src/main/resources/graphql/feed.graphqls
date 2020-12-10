@@ -1,4 +1,8 @@
 #A Feed GraphGL schema
+schema {
+    query: Query
+}
+#Type Feed definicion
 type Feed {
 #    Identificator of the item
     id: ID!
@@ -17,5 +21,6 @@ type Feed {
 extend type Query {
 #    Just example of items set
     findAllFeeds: [Feed]!
+#    Counter of items
     countFeeds: Long!
 }
