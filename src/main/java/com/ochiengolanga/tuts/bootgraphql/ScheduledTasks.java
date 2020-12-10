@@ -21,21 +21,15 @@ public class ScheduledTasks {
 
     @Scheduled(initialDelay=10000, fixedRate = 300000)
     @Transactional(propagation=Propagation.REQUIRES_NEW)
-    public void checkRSS() {
+    public void checkRSS() throws InvalidFeedException, MalformedFeedException, MalformedURLException {
 
-        System.out.printf(" - Time to cheсk \n");
-        try{
-            //Get podcast
-            URL myUrl = new URL("http://feeds.nos.nl/nosjournaal?format=xml");
-            Podcast podcast = new Podcast(myUrl);
+        System.out.printf("- Time to cheсk\n");
+        //Get podcast
+        Podcast podcast = new Podcast(new URL("http://feeds.nos.nl/nosjournaal?format=xml"));
 
-            //Display Feed Details
-            List<Episode> episodes = podcast.getEpisodes();
-            System.out.printf(" Time %s has %d episodes!\n", podcast.getTitle(), episodes.size());
-
-        }catch(InvalidFeedException | MalformedFeedException | MalformedURLException ex){
-            System.out.println("The url, feed, channel is not well formed: " + ex);
-        }
+        //Display Feed Details
+        List<Episode> episodes = podcast.getEpisodes();
+        System.out.printf("%s has %d episodes!\n", podcast.getTitle(), episodes.size());
 
     } //checkRSS
 } //ScheduledTasks
