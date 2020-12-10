@@ -53,6 +53,10 @@ ext {
     springCloudVersion = 'Greenwich.M1'
 }
 
+configurations.all {
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
 
 dependencies {
     implementation('com.icosillion.podengine:podengine:2.3')
@@ -69,6 +73,25 @@ dependencies {
     compileOnly('org.springframework.boot:spring-boot-configuration-processor')
     compileOnly('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "com.h2database:h2:1.4.194"
+    testCompile "junit:junit:4.12"
+    testCompile "org.mockito:mockito-core:1.9.5"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}"
+//    compile("org.liquibase:liquibase-core")
+    testCompile "io.rest-assured:rest-assured:3.0.6"
+    testCompile "io.rest-assured:spring-mock-mvc:3.0.6"
+
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    compile "javax.persistence:javax.persistence-api:2.2"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-log4j2"
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+    compile 'commons-io:commons-io:2.6'
+
 }
 
 dependencyManagement {
