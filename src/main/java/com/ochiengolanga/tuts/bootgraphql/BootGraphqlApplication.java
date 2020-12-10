@@ -1,12 +1,9 @@
 package com.ochiengolanga.tuts.bootgraphql;
 
 import com.ochiengolanga.tuts.bootgraphql.domain.Author;
-import com.ochiengolanga.tuts.bootgraphql.domain.Book;
 import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
 import com.ochiengolanga.tuts.bootgraphql.exception.GraphQLErrorAdapter;
 import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
-import com.ochiengolanga.tuts.bootgraphql.repository.BookRepository;
-import com.ochiengolanga.tuts.bootgraphql.resolvers.BookResolver;
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 import com.ochiengolanga.tuts.bootgraphql.resolvers.FeedResolver;
 import com.ochiengolanga.tuts.bootgraphql.resolvers.Query;
@@ -79,23 +76,16 @@ public class BootGraphqlApplication {
     }
 
     @Bean
-    public BookResolver authorResolver(AuthorRepository authorRepository, JokesAPIService jokesAPIService) {
-        return new BookResolver(authorRepository, jokesAPIService);
+    public Query query(JokesAPIService jokesAPIService, AuthorRepository authorRepository, FeedRepository feedRepository) {
+        return new Query(jokesAPIService, authorRepository, feedRepository);
     }
 
     @Bean
-    public Query query(JokesAPIService jokesAPIService, AuthorRepository authorRepository, BookRepository bookRepository, FeedRepository feedRepository) {
-        return new Query(jokesAPIService, authorRepository, bookRepository, feedRepository);
-    }
-
-    @Bean
-    public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository, FeedRepository feedRepository) {
+    public CommandLineRunner demo(AuthorRepository authorRepository, FeedRepository feedRepository) {
         return (args) -> {
             Author author = new Author("Herbert", "Schildt");
             authorRepository.save(author);
 
-            bookRepository.save(new Book("Java: A Beginner's Guide, Sixth Edition", "0071809252", 728, author));
-            bookRepository.save(new Book("Scala: A Beginner's Guide, First Edition", "0071809253", 1728, author));
             //Download and parse the nos.nl RSS feed http://feeds.nos.nl/nosjournaal?format=xml
             Podcast podcast = new Podcast(new URL("http://feeds.nos.nl/nosjournaal?format=xml"));
 
