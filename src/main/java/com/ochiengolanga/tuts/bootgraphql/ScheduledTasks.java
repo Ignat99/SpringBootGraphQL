@@ -1,8 +1,6 @@
 package com.ochiengolanga.tuts.bootgraphql;
 
-//import com.ochiengolanga.tuts.bootgraphql.domain.Author;
 import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
-
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -25,17 +23,18 @@ public class ScheduledTasks {
     @Transactional(propagation=Propagation.REQUIRES_NEW)
     public void checkRSS() {
 
-            System.out.printf(" - Time to cheсk \n");
+        System.out.printf(" - Time to cheсk \n");
         try{
+            //Get podcast
             URL myUrl = new URL("http://feeds.nos.nl/nosjournaal?format=xml");
             Podcast podcast = new Podcast(myUrl);
+
             //Display Feed Details
             List<Episode> episodes = podcast.getEpisodes();
             System.out.printf(" Time %s has %d episodes!\n", podcast.getTitle(), episodes.size());
+
         }catch(InvalidFeedException | MalformedFeedException | MalformedURLException ex){
-            System.out.println("The url is not well formed: " + ex);
-            System.out.println("Or the Feed is not well formed: " + ex);
-            System.out.println("Or the channel is not well formed: " + ex);
+            System.out.println("The url, feed, channel is not well formed: " + ex);
         }
 
     } //checkRSS
