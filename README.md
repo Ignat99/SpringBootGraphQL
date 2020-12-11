@@ -42,6 +42,8 @@ The program will start embedded tomcat at port 8080, so you can now navigate to 
 
 Documentation could be reached [HERE](http://localhost:8080/graphiql).
 
+## Query
+
 ```sh
 {
   findAllFeeds {
