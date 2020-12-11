@@ -25,7 +25,7 @@ public class FeedService {
         feed.setTitle(title);
         feed.setDescription(description);
         feed.setItemCount(itemCount);
-        feed.setPubDate(LocalDate.parse(pubDate));
+        feed.setPubDate(pubDate);
         feed.setImage(image);
         return this.feedRepository.save(feed);
     }

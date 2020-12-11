@@ -4,7 +4,6 @@ import com.icosillion.podengine.models.Episode;
 import com.icosillion.podengine.models.Podcast;
 import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 import com.ochiengolanga.tuts.bootgraphql.exception.GraphQLErrorAdapter;
-//import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 import com.ochiengolanga.tuts.bootgraphql.query.FeedQuery;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
@@ -84,14 +83,7 @@ public class EntityManagerFactoryConfiguration {
       // List all episodes
       for (Episode episode : episodes) {
         System.out.println("- " + episode.getTitle());
-/*        feedRepository.save(
-            new Feed(
-                episode.getTitle(),
-                episode.getDescription(),
-                20,
-                LocalDate.parse(episode.getPubDate().toString()),
-                episode.getEnclosure().getURL().toString()));
-*/      }
+      }
     };
   }
 }

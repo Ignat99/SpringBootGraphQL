@@ -40,14 +40,14 @@ public class Feed implements Serializable {
     private int itemCount;
 
     @Column(name="feed_pubdate", nullable = true)
-    private LocalDate pubDate;
+    private String pubDate;
 
     private transient String formattedDate;
 
     @Column(name="feed_image", nullable = true)
     private String image;
 
-    public Feed(String title, String description, int itemCount, LocalDate pubDate, String image) {
+    public Feed(String title, String description, int itemCount, String pubDate, String image) {
         this.title = title;
         this.description = description;
         this.itemCount = itemCount;
