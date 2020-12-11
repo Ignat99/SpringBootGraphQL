@@ -4,13 +4,13 @@ import com.icosillion.podengine.models.Episode;
 import com.icosillion.podengine.models.Podcast;
 import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 import com.ochiengolanga.tuts.bootgraphql.exception.GraphQLErrorAdapter;
-import com.ochiengolanga.tuts.bootgraphql.repository.AuthorRepository;
-import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
-import com.ochiengolanga.tuts.bootgraphql.resolvers.Query;
+//import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
+import com.ochiengolanga.tuts.bootgraphql.query.FeedQuery;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.servlet.GraphQLErrorHandler;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,12 +67,12 @@ public class EntityManagerFactoryConfiguration {
   }
 
   @Bean
-  public Query query(AuthorRepository authorRepository, FeedRepository feedRepository) {
-    return new Query(authorRepository, feedRepository);
+  public FeedQuery query() {
+    return new FeedQuery();
   }
 
   @Bean
-  public CommandLineRunner demo(AuthorRepository authorRepository, FeedRepository feedRepository) {
+  public CommandLineRunner demo() {
     return (args) -> {
       // Download and parse the nos.nl RSS feed http://feeds.nos.nl/nosjournaal?format=xml
       Podcast podcast = new Podcast(new URL(HTTP_FEEDS_NOS_NL_NOSJOURNAAL_FORMAT_XML));
@@ -84,14 +84,14 @@ public class EntityManagerFactoryConfiguration {
       // List all episodes
       for (Episode episode : episodes) {
         System.out.println("- " + episode.getTitle());
-        feedRepository.save(
+/*        feedRepository.save(
             new Feed(
                 episode.getTitle(),
                 episode.getDescription(),
                 20,
-                episode.getPubDate().toString(),
+                LocalDate.parse(episode.getPubDate().toString()),
                 episode.getEnclosure().getURL().toString()));
-      }
+*/      }
     };
   }
 }

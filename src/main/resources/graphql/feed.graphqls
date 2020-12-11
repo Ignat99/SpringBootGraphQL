@@ -4,23 +4,34 @@ schema {
 }
 #Type Feed definicion
 type Feed {
-#    Identificator of the item
+    #    Identificator of the item
     id: ID!
-#    Name of the RSS topic
+    #    Name of the RSS topic
     title: String!
-#    Content of topic
+    #    Content of topic
     description: String!
+    #    Counter of items
     itemCount: Int
-#    Date of publication
-    pubdate: String!
-#    URL of the Pictures
+    #    Date of publication
+    pubDate: String!
+    #    URL of the Pictures
     image: String!
 }
 
 #Show the all items of a feed
-extend type Query {
-#    Just example of items set
+type Query {
+    #    Just example of items set
     findAllFeeds: [Feed]!
-#    Counter of items
+    #    Some numbers of item
+    feeds(count: Int):[Feed]
+    # Just one number
+    feed(id: ID):Feed
+    #    Counter of items
     countFeeds: Long!
+}
+
+#Change new item
+type Mutation {
+    #    Create new item
+    createFeed(title: String!, description: String!, itemCount: Int, pubDate: String!, image: String!):Feed
 }
