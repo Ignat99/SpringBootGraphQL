@@ -1,8 +1,8 @@
 package com.ochiengolanga.tuts.bootgraphql.interfaces;
 
-import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
+import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 
 public interface FeedInterfaces {
 
-    public Feed reader(String format);
+    Feed reader(String format);
 }
