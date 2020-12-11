@@ -42,6 +42,8 @@ The program will start embedded tomcat at port 8080, so you can now navigate to 
 
 Documentation could be reached [HERE](http://localhost:8080/graphiql).
 
+## Query
+
 ```sh
 {
   findAllFeeds {
@@ -55,6 +57,18 @@ Documentation could be reached [HERE](http://localhost:8080/graphiql).
 ```
 
 H2 database console http://75.126.254.59:8080/h2-console/
+
+## Mutation
+
+```sh
+mutation {
+  createFeed(title: "Some News", description: "A and B sit on the tube", itemCount: 3, pubDate: "2016-08-16", image: "https://habrastorage.org/getpro/habr/post_images/5d1/c24/8aa/5d1c248aa840e0955775b7da1eee4595.png") 
+  {
+    id
+  }
+}
+```
+
 
 ```sh
 SELECT * FROM FEED
