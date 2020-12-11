@@ -84,7 +84,7 @@ I tried to focus on the application *CORE BUSINESS*, so not all the classes were
 
 ## Non-Tested Classes
 1. `Exceptions` were not tested.
-2. ` Application.java` was nos tested
+2. ` BootGraphqlApplication.java ` was nos tested
 3. `JpaConfiguration` was not tested 
 3. `model` package was not tested, but the `Account` class was, because of the business logic methods
 4. `DTOs` inside of `request` and `response` packages were not tested
