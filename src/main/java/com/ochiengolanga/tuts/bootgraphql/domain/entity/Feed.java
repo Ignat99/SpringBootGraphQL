@@ -1,19 +1,21 @@
-package com.ochiengolanga.tuts.bootgraphql.domain;
+package com.ochiengolanga.tuts.bootgraphql.domain.entity;
 
-//import com.ochiengolanga.tuts.bootgraphql.domain.dto.Joke;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @Entity
-public class Feed {
+@DynamicUpdate
+public class Feed implements Serializable {
     @Id
     @Column(name="feed_id", nullable = false)
     @GeneratedValue(strategy= GenerationType.AUTO)

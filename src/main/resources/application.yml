@@ -1,0 +1,24 @@
+management:
+    endpoint:
+        env:
+            enabled: true
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: env, health, info, refresh
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        password: ''
+        url: jdbc:h2:file:~/tmp/test
+        username: sa
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+            settings:
+                web-allow-others: true
+    jpa:
+        show_sql: true

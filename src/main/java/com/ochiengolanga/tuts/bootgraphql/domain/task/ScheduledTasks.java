@@ -1,7 +1,6 @@
-package com.ochiengolanga.tuts.bootgraphql;
+package com.ochiengolanga.tuts.bootgraphql.domain.task;
 
-import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
-import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,6 +16,7 @@ import com.icosillion.podengine.models.Podcast;
 import com.icosillion.podengine.models.Episode;
 
 @Component
+@Slf4j
 public class ScheduledTasks {
 
     @Scheduled(initialDelay=10000, fixedRate = 300000)

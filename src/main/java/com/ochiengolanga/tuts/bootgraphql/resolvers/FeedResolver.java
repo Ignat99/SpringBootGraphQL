@@ -1,7 +1,7 @@
 package com.ochiengolanga.tuts.bootgraphql.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
-import com.ochiengolanga.tuts.bootgraphql.domain.Feed;
+import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 
 import java.util.Optional;

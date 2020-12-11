@@ -49,6 +49,7 @@ Documentation could be reached [HERE](http://localhost:8080/graphiql).
     title
     description
     pubdate
+    image
   }
 }
 ```
@@ -56,7 +57,7 @@ Documentation could be reached [HERE](http://localhost:8080/graphiql).
 H2 database console http://75.126.254.59:8080/h2-console/
 
 ```sh
-SELECT * FROM FEED 
+SELECT * FROM FEED
 ```
 
 ## Test Coverage
@@ -68,7 +69,7 @@ SonarQube console http://75.126.254.59:9000/dashboard?id=springbootgraphql
 For running sensor use command from project folder
 
 ```sh
-./gradlew jacocoTestReport 
+./gradlew jacocoTestReport
 ../sonar-scanner/bin/sonar-scanner
 ```
 
@@ -83,8 +84,8 @@ I tried to focus on the application *CORE BUSINESS*, so not all the classes were
 
 ## Non-Tested Classes
 1. `Exceptions` were not tested.
-2. ` Application.java` was nos tested
-3. `JpaConfiguration` and `SwaggerConfig` were not tested 
+2. ` BootGraphqlApplication.java ` was nos tested
+3. `JpaConfiguration` was not tested 
 3. `model` package was not tested, but the `Account` class was, because of the business logic methods
 4. `DTOs` inside of `request` and `response` packages were not tested
 5. `@NotSameAccount` annotation was not tested
