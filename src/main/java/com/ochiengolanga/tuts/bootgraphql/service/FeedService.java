@@ -4,6 +4,11 @@ import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 import com.ochiengolanga.tuts.bootgraphql.repository.FeedRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+//import org.springframework.data.web.PageableDefault;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,23 +26,25 @@ public class FeedService {
 
     @Transactional
     public Feed createFeed(final String title,final String description, final int itemCount, final String pubDate, final String image) {
-        final Feed feed = new Feed();
-        feed.setTitle(title);
+        final Feed feed = (Feed) new Feed(title, description, itemCount, pubDate, image);
+/*        feed.setTitle(title);
         feed.setDescription(description);
         feed.setItemCount(itemCount);
         feed.setPubDate(pubDate);
-        feed.setImage(image);
+        feed.setImage(image); */
         return this.feedRepository.save(feed);
     }
 
     @Transactional(readOnly = true)
-    public List<Feed> getAllFeed(final int count) {
-        return this.feedRepository.findAll().stream().limit(count).collect(Collectors.toList());
+    public List<Feed> getAllFeed(final Integer pageNo, final Integer pageSize, final String sortBy, final int count) {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        return this.feedRepository.findAll(paging).stream().limit(count).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public Iterable<Feed> getAllFeeds() {
-        return this.feedRepository.findAll();
+    public Page<Feed> getAllFeeds() {
+        Pageable paging = PageRequest.of(0, 10, Sort.by("title"));
+        return this.feedRepository.findAll(paging);
     }
 
 

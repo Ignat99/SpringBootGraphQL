@@ -5,9 +5,9 @@ import java.util.Objects;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+//import lombok.ToString;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+//import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,10 +16,10 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NaturalId;
 
 @Data
-@EqualsAndHashCode
-@Getter
-@Setter
-@ToString
+//@EqualsAndHashCode
+//@Getter
+//@Setter
+//@ToString
 @NoArgsConstructor
 @Entity
 @DynamicUpdate
@@ -77,16 +77,16 @@ public class Feed implements Serializable {
 
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(java.lang.Object o) {
 
         if (this == o) {
             return true;
         }
-        
+
         if (getClass() != o.getClass()) {
             return false;
         }
-        
+
         Feed other = (Feed) o;
         return Objects.equals(title, other.getTitle());
         // including sku 

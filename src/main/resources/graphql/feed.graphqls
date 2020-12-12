@@ -23,7 +23,7 @@ type Query {
     #    Just example of items set
     findAllFeeds: [Feed]!
     #    Some numbers of item
-    feeds(count: Int):[Feed]
+    feeds(pageNo: Int, pageSize: Int, sortBy: String!, count: Int):[Feed]
     # Just one number
     feed(id: ID):Feed
     #    Counter of items
