@@ -4,5 +4,5 @@ import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 
 public interface FeedInterfaces {
 
-    Feed reader(String format);
+    Feed createOrUpdateFeed(String title, String description, int itemCount, String pubDate, String image);
 }

@@ -10,7 +10,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Example;
-
+import com.ochiengolanga.tuts.bootgraphql.utils.AbstractService;
+import org.springframework.util.StopWatch;
+import com.ochiengolanga.tuts.bootgraphql.interfaces.FeedInterfaces;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,8 +21,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class FeedService {
+public class FeedService extends AbstractService implements FeedInterfaces {
 
+    public static final String RETRIEVE_RSS = "retrieving rss new form the external services";
+    public static final String SAVE_RSS = "saving rss in db";
+
+    @Autowired
     private final FeedRepository feedRepository ;
 
     public FeedService(final FeedRepository feedRepository) {
@@ -38,9 +45,15 @@ public class FeedService {
 
     @Transactional
     public Feed createOrUpdateFeed(final String title,final String description, final int itemCount, final String pubDate, final String image) {
+        String methodName = "createOrUpdateFeed";
+        logStart(methodName);
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start(RETRIEVE_RSS);
         final Feed feed = (Feed) new Feed(title, description, itemCount, pubDate, image);
+        logTaskInfoAndStop(methodName, stopWatch);
 
         if (this.isExistsFeed(feed)) {
+            stopWatch.start(SAVE_RSS);
 /*            Feed existsFeed = this.feedRepository.findByTitle(feed.getTitle());
             existsFeed.setTitle(title);
             existsFeed.setDescription(description);
@@ -49,8 +62,13 @@ public class FeedService {
             existsFeed.setImage(image);
             return this.feedRepository.save(existsFeed);
 */
+            logTaskInfoAndStop(methodName, stopWatch);
+            logExit(methodName, feed);
             return feed;
         } else {
+            stopWatch.start(SAVE_RSS);
+            logTaskInfoAndStop(methodName, stopWatch);
+            logExit(methodName, feed);
             return this.feedRepository.save(feed);
         }
     }
