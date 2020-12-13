@@ -33,7 +33,7 @@ public class Feed implements Serializable {
     private Long id;
 
 //    @NaturalId(mutable = false)
-    @Column(name="feed_title", nullable = false, unique = true, length = 512)
+    @Column(name="feed_title", nullable = false, length = 512)
     private String title;
 
     @Column(length = 30000, name="feed_description", nullable = true)
@@ -50,7 +50,7 @@ public class Feed implements Serializable {
     @Column(name="feed_image", nullable = true)
     private String image;
 
-    @Column(name="feed_guid", nullable = true)
+    @Column(name="feed_guid", nullable = false, unique = true)
     private String guid;
 
 
