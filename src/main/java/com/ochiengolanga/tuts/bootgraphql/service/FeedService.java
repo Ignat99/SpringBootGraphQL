@@ -8,7 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-//import org.springframework.data.web.PageableDefault;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Example;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,15 +26,33 @@ public class FeedService {
         this.feedRepository = feedRepository ;
     }
 
+    @Transactional(readOnly = true)
+    public boolean isExistsFeed(final Feed feed) {
+        //The ExampleMatcher is immutable and can be static I think
+        ExampleMatcher TITLE_MATCHER = ExampleMatcher.matching()
+            .withIgnorePaths("id")
+            .withMatcher("title", ExampleMatcher.GenericPropertyMatchers.ignoreCase());
+        Example<Feed> example = Example.<Feed>of(feed, TITLE_MATCHER);
+        return (boolean) feedRepository.exists(example);
+    }
+
     @Transactional
-    public Feed createFeed(final String title,final String description, final int itemCount, final String pubDate, final String image) {
+    public Feed createOrUpdateFeed(final String title,final String description, final int itemCount, final String pubDate, final String image) {
         final Feed feed = (Feed) new Feed(title, description, itemCount, pubDate, image);
-/*        feed.setTitle(title);
-        feed.setDescription(description);
-        feed.setItemCount(itemCount);
-        feed.setPubDate(pubDate);
-        feed.setImage(image); */
-        return this.feedRepository.save(feed);
+
+        if (this.isExistsFeed(feed)) {
+/*            Feed existsFeed = this.feedRepository.findByTitle(feed.getTitle());
+            existsFeed.setTitle(title);
+            existsFeed.setDescription(description);
+            existsFeed.setItemCount(itemCount);
+            existsFeed.setPubDate(pubDate);
+            existsFeed.setImage(image);
+            return this.feedRepository.save(existsFeed);
+*/
+            return feed;
+        } else {
+            return this.feedRepository.save(feed);
+        }
     }
 
     @Transactional(readOnly = true)

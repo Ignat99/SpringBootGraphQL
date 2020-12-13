@@ -43,7 +43,7 @@ public class ScheduledTasks {
             System.out.println("- " + episode.getTitle());
 
             //Create Feeds
-            this.feedService.createFeed(
+            this.feedService.createOrUpdateFeed(
                 episode.getTitle(),
                 episode.getDescription(),
                 1,

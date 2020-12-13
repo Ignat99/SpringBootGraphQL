@@ -16,6 +16,6 @@ public class FeedMutation implements GraphQLMutationResolver {
     private FeedService feedService;
 
     public Feed createFeed(final String title, final String description, final int itemCount, final String pubDate, final String image) {
-        return this.feedService.createFeed(title, description, itemCount, pubDate, image);
+        return this.feedService.createOrUpdateFeed(title, description, itemCount, pubDate, image);
     }
 }
