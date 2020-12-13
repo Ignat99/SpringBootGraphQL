@@ -4,10 +4,12 @@ import java.util.Objects;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Builder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,8 +22,10 @@ import org.hibernate.annotations.DynamicUpdate;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder(toBuilder = true)
 @DynamicUpdate
 public class Feed implements Serializable {
 
