@@ -50,12 +50,17 @@ public class Feed implements Serializable {
     @Column(name="feed_image", nullable = true)
     private String image;
 
-    public Feed(String title, String description, int itemCount, String pubDate, String image) {
+    @Column(name="feed_guid", nullable = true)
+    private String guid;
+
+
+    public Feed(String title, String description, int itemCount, String pubDate, String image, String guid) {
         this.title = title;
         this.description = description;
         this.itemCount = itemCount;
         this.pubDate = pubDate;
         this.image = image;
+        this.guid = guid;
     }
 
     // Getter and setter

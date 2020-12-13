@@ -48,7 +48,8 @@ public class ScheduledTasks {
                 episode.getDescription(),
                 1,
                 podcast.getPubDateString(),
-                episode.getEnclosure().getURL().toString()
+                episode.getEnclosure().getURL().toString(),
+                episode.getGUID()
             );
         }
 

@@ -44,22 +44,23 @@ public class FeedService extends AbstractService implements FeedInterfaces {
     }
 
     @Transactional
-    public Feed createOrUpdateFeed(final String title,final String description, final int itemCount, final String pubDate, final String image) {
+    public Feed createOrUpdateFeed(final String title,final String description, final int itemCount, final String pubDate, final String image, final String guid) {
         String methodName = "createOrUpdateFeed";
         logStart(methodName);
         StopWatch stopWatch = new StopWatch();
         stopWatch.start(RETRIEVE_RSS);
-        final Feed feed = (Feed) new Feed(title, description, itemCount, pubDate, image);
+        final Feed feed = (Feed) new Feed(title, description, itemCount, pubDate, image, guid);
         logTaskInfoAndStop(methodName, stopWatch);
 
         if (this.isExistsFeed(feed)) {
             stopWatch.start(SAVE_RSS);
-/*            Feed existsFeed = this.feedRepository.findByTitle(feed.getTitle());
+/*            Feed existsFeed = this.feedRepository.findByGuid(feed.getGuid());
             existsFeed.setTitle(title);
             existsFeed.setDescription(description);
             existsFeed.setItemCount(itemCount);
             existsFeed.setPubDate(pubDate);
             existsFeed.setImage(image);
+            existsFeed.setGuid(guid);
             return this.feedRepository.save(existsFeed);
 */
             logTaskInfoAndStop(methodName, stopWatch);
