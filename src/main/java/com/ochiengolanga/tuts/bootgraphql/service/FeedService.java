@@ -42,8 +42,8 @@ public class FeedService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Feed> getAllFeeds() {
-        Pageable paging = PageRequest.of(0, 10, Sort.by("title"));
+    public Page<Feed> getAllFeeds(final Integer pageNo, final Integer pageSize, final String sortBy) {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         return this.feedRepository.findAll(paging);
     }
 

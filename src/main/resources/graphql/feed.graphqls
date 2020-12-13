@@ -21,9 +21,9 @@ type Feed {
 #Show the all items of a feed
 type Query {
     #    Just example of items set
-    findAllFeeds: [Feed]!
+    findAllFeeds(pageNo: Int = 0, pageSize: Int = 20, sortBy: String! = "title"): [Feed]!
     #    Some numbers of item
-    feeds(pageNo: Int, pageSize: Int, sortBy: String!, count: Int):[Feed]
+    feeds(pageNo: Int = 0, pageSize: Int = 20, sortBy: String! = "title", count: Int = 1):[Feed]
     # Just one number
     feed(id: ID):Feed
     #    Counter of items

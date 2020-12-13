@@ -15,8 +15,8 @@ public class FeedQuery implements GraphQLQueryResolver {
     @Autowired
     private FeedService feedService;
 
-    public Iterable<Feed> getFindAllFeeds() {
-        return this.feedService.getAllFeeds();
+    public Iterable<Feed> getFindAllFeeds(final Integer pageNo, final Integer pageSize, final String sortBy) {
+        return this.feedService.getAllFeeds(pageNo, pageSize, sortBy);
     }
 
     public List<Feed> getFeeds(final Integer pageNo, final Integer pageSize, final String sortBy, final int count) {
