@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlinVersion = '1.2.31'
+//        kotlinVersion = '1.2.31'
         springBootVersion = '2.1.0.RELEASE'
     }
     repositories {
@@ -8,8 +8,8 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+//        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
     }
 }
 
@@ -26,8 +26,8 @@ sonarqube {
 
 
 apply plugin: 'java'
-apply plugin: 'kotlin'
-apply plugin: 'kotlin-spring'
+//apply plugin: 'kotlin'
+//apply plugin: 'kotlin-spring'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
 apply plugin: 'org.springframework.boot'
@@ -74,6 +74,9 @@ dependencies {
     compile group: 'com.graphql-java', name: 'graphiql-spring-boot-starter', version: '5.0.2'
     compile group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
 
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.24.5'
+
     runtimeOnly('com.h2database:h2')
     compileOnly('org.springframework.boot:spring-boot-configuration-processor')
     compileOnly('org.projectlombok:lombok')
@@ -82,9 +85,9 @@ dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.5.3'
     testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "com.h2database:h2:1.4.194"
-    testCompile "junit:junit:4.12"
-    testCompile "org.mockito:mockito-core:1.9.5"
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}"
+//    testCompile "junit:junit:4.12"
+//    testCompile "org.mockito:mockito-core:1.9.5"
+//    testCompile "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}"
 //    compile("org.liquibase:liquibase-core")
     testCompile "io.rest-assured:rest-assured:3.0.6"
     testCompile "io.rest-assured:spring-mock-mvc:3.0.6"
@@ -93,8 +96,8 @@ dependencies {
     compile "javax.persistence:javax.persistence-api:2.2"
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.springframework.boot:spring-boot-starter-log4j2"
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
-    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+//    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+//    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     compile 'commons-io:commons-io:2.6'
 
 }

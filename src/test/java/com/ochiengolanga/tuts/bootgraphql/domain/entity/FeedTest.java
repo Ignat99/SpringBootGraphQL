@@ -20,13 +20,13 @@ public class FeedTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void giveMoneyMustThrowExceptionWhenAccountBalanceIsGoingNegative() {
+    public void getFormattedDateThrowFeedDateExceptionWhenpubDateIsGoingStandart() {
         final Feed feed = Feed.builder().title("Dummy").description("bla bla bla").pubDate("Sun, 13 Dec 2020 16:05:36 +0100").build();
 
 //        thrown.expect(FeedDateException.class);
 
-        feed.getFormattedDate();
+        System.out.printf(feed.getFormattedDate());
 
-        assertThat(feed.getFormattedDate()).isEqualTo("2020-12-13");
+        assertThat(feed.getFormattedDate()).isEqualTo("Sun, 13 Dec 2020 16:05:36 +0100");
     }
 }
