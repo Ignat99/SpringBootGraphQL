@@ -42,7 +42,7 @@ public class NosFeedServiceTest {
 //    public static final String SAVE_RSS = "saving rss in db";
 
     @Mock
-    private final FeedRepository feedRepository;
+    private FeedRepository feedRepository;
 
 
     @InjectMocks
@@ -50,7 +50,7 @@ public class NosFeedServiceTest {
 
     @Test
     public void createNosFeed() {
-        final Feed nosFeed = Feed.builder().title("Dummy").itemCount(3).guid("aaa").build();
+        final Feed nosFeed = Feed.builder().id(1L).title("Dummy").itemCount(3).guid("aaa").build();
 
 /*
         final Account persistedAccount = Account.builder()
@@ -60,8 +60,8 @@ public class NosFeedServiceTest {
                 .id(1L)
                 .build();
 */
-        nosFeed.Feed("Dummy", "bla bla bla", 3, "2020-12-12", "http://image", "aaa", "http://link");
-        nosFeed.Feed("Dummy", "bla bla bla", 3, "2020-12-12", "http://image", "aaa", "http://link");
+//        nosFeed.Feed("Dummy", "bla bla bla", 3, "2020-12-12", "http://image", "aaa", "http://link");
+//        nosFeed.Feed("Dummy", "bla bla bla", 3, "2020-12-12", "http://image", "aaa", "http://link");
 
 //        when(this.feedRepository.save(nosFeed)).thenReturn(persistedNosFeed);
 
