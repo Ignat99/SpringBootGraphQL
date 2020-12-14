@@ -18,6 +18,8 @@ type Feed {
     image: String!
     #    ID of item
     guid: String!
+    #    Link to article
+    link: String!
 }
 
 #Show the all items of a feed
@@ -35,5 +37,5 @@ type Query {
 #Change new item
 type Mutation {
     #    Create new item
-    createFeed(title: String!, description: String!, itemCount: Int, pubDate: String!, image: String!, guid: String!):Feed
+    createFeed(title: String!, description: String!, itemCount: Int, pubDate: String!, image: String!, guid: String!, link: String!):Feed
 }
