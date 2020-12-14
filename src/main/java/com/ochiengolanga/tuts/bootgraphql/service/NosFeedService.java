@@ -10,9 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Example;
-import com.ochiengolanga.tuts.bootgraphql.utils.AbstractService;
+import com.ochiengolanga.tuts.bootgraphql.utils.LogService;
 import org.springframework.util.StopWatch;
-import com.ochiengolanga.tuts.bootgraphql.interfaces.FeedInterfaces;
+import com.ochiengolanga.tuts.bootgraphql.interfaces.FeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
@@ -21,7 +21,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class FeedService extends AbstractService implements FeedInterfaces {
+public class NosFeedService extends LogService implements FeedService {
 
     public static final String RETRIEVE_RSS = "retrieving rss new form the external services";
     public static final String SAVE_RSS = "saving rss in db";
@@ -29,7 +29,7 @@ public class FeedService extends AbstractService implements FeedInterfaces {
     @Autowired
     private final FeedRepository feedRepository ;
 
-    public FeedService(final FeedRepository feedRepository) {
+    public NosFeedService(final FeedRepository feedRepository) {
         this.feedRepository = feedRepository ;
     }
 
@@ -54,16 +54,6 @@ public class FeedService extends AbstractService implements FeedInterfaces {
 
         if (this.isExistsFeed(feed)) {
             stopWatch.start(SAVE_RSS);
-/*            Feed existsFeed = this.feedRepository.findByGuid(feed.getGuid());
-            existsFeed.setTitle(title);
-            existsFeed.setDescription(description);
-            existsFeed.setItemCount(itemCount);
-            existsFeed.setPubDate(pubDate);
-            existsFeed.setImage(image);
-            existsFeed.setGuid(guid);
-            existsFeed.setLink(link);
-            return this.feedRepository.save(existsFeed);
-*/
             logTaskInfoAndStop(methodName, stopWatch);
             logExit(methodName, feed);
             return feed;

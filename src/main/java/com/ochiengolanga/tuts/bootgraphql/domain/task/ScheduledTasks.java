@@ -14,7 +14,7 @@ import com.icosillion.podengine.exceptions.InvalidFeedException;
 import com.icosillion.podengine.exceptions.MalformedFeedException;
 import com.icosillion.podengine.utils.DateUtils;
 import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
-import com.ochiengolanga.tuts.bootgraphql.service.FeedService;
+import com.ochiengolanga.tuts.bootgraphql.service.NosFeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.icosillion.podengine.models.Podcast;
 import com.icosillion.podengine.models.Episode;
@@ -24,7 +24,7 @@ import com.icosillion.podengine.models.Episode;
 public class ScheduledTasks {
 
     @Autowired
-    private FeedService feedService;
+    private NosFeedService feedService;
 
     @Scheduled(initialDelay=10000, fixedRate = 300000)
     @Transactional(propagation=Propagation.REQUIRES_NEW)
