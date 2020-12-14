@@ -33,9 +33,3 @@ type Query {
     #    Counter of items
     countFeeds: Long!
 }
-
-#Change new item
-type Mutation {
-    #    Create new item
-    createFeed(title: String!, description: String!, itemCount: Int, pubDate: String!, image: String!, guid: String!, link: String!):Feed
-}
