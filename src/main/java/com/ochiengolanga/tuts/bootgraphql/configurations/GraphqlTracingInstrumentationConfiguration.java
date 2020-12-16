@@ -20,9 +20,9 @@ public class GraphqlTracingInstrumentationConfiguration extends TracingInstrumen
     @Override
     public CompletableFuture<ExecutionResult> instrumentExecutionResult(ExecutionResult executionResult,
                                                                         InstrumentationExecutionParameters parameters) {
-        if (log.isDebugEnabled()) {
+//        if (log.isDebugEnabled()) {
             logTracingResults(parameters);
-        }
+//        }
         return super.instrumentExecutionResult(executionResult, parameters);
     }
 
@@ -30,7 +30,7 @@ public class GraphqlTracingInstrumentationConfiguration extends TracingInstrumen
         TracingSupport tracingSupport = parameters.getInstrumentationState();
         Long executionTime = getTime(tracingSupport.snapshotTracingData());
         if (executionTime != null) {
-            log.debug(String.format("Query (%s) Execution time : %s ms", parameters.getOperation(), executionTime));
+//            log.debug(String.format("Query (%s) Execution time : %s ms", parameters.getOperation(), executionTime));
         }
     }
 

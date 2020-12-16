@@ -49,7 +49,7 @@ public class NosFeedService extends LogService implements FeedService {
         logStart(methodName);
         StopWatch stopWatch = new StopWatch();
         stopWatch.start(RETRIEVE_RSS);
-        final Feed feed = (Feed) new Feed(title, description, itemCount, pubDate, image, guid, link);
+        final Feed feed = new Feed(title, description, itemCount, pubDate, image, guid, link);
         logTaskInfoAndStop(methodName, stopWatch);
 
         if (this.isExistsFeed(feed)) {
@@ -66,13 +66,13 @@ public class NosFeedService extends LogService implements FeedService {
     }
 
     @Transactional(readOnly = true)
-    public List<Feed> getAllFeed(final Integer pageNo, final Integer pageSize, final String sortBy, final int count) {
+    public List<Feed> getFeedsService(final Integer pageNo, final Integer pageSize, final String sortBy, final int count) {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         return this.feedRepository.findAll(paging).stream().limit(count).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public Page<Feed> getAllFeeds(final Integer pageNo, final Integer pageSize, final String sortBy) {
+    public Page<Feed> getAllFeedsService(final Integer pageNo, final Integer pageSize, final String sortBy) {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         return this.feedRepository.findAll(paging);
     }

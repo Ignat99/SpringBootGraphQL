@@ -4,12 +4,12 @@ import java.util.Objects;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+//import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Builder;
+//import lombok.EqualsAndHashCode;
+//import lombok.Builder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,14 +18,15 @@ import org.hibernate.annotations.DynamicUpdate;
 //import org.hibernate.annotations.NaturalId;
 
 @Data
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
+//@AllArgsConstructor
+//TODO: Need understand why it decorator @NoArgsConstructor not made a default constructor
 @NoArgsConstructor
 @Entity
-@Builder(toBuilder = true)
+//@Builder(toBuilder = true)
 @DynamicUpdate
 public class Feed implements Serializable {
 
@@ -60,7 +61,7 @@ public class Feed implements Serializable {
     @Column(name="feed_link", nullable = true)
     private String link;
 
-
+    //We used that constructor for mutation in CreateOrUpdateFeed
     public Feed(String title, String description, int itemCount, String pubDate, String image, String guid, String link) {
         this.title = title;
         this.description = description;
@@ -71,8 +72,12 @@ public class Feed implements Serializable {
         this.link = link;
     }
 
-    // Getter and setter
-    public String getFormattedDate() {
-        return getPubDate().toString();
+    //We use that one for query()
+    public Feed () {
     }
+
+    // Getter and setter
+//    public String getFormattedDate() {
+//        return getPubDate().toString();
+//    }
 }

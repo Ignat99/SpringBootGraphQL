@@ -5,6 +5,7 @@ import com.icosillion.podengine.models.Podcast;
 import com.ochiengolanga.tuts.bootgraphql.domain.entity.Feed;
 import com.ochiengolanga.tuts.bootgraphql.exception.GraphQLErrorAdapter;
 import com.ochiengolanga.tuts.bootgraphql.query.FeedQuery;
+import com.ochiengolanga.tuts.bootgraphql.mutation.FeedMutation;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.servlet.GraphQLErrorHandler;
@@ -64,10 +65,14 @@ public class EntityManagerFactoryConfiguration {
       }
     };
   }
-
   @Bean
   public FeedQuery query() {
     return new FeedQuery();
+  }
+
+  @Bean
+  public FeedMutation mutation() {
+    return new FeedMutation();
   }
 
   @Bean
@@ -78,7 +83,7 @@ public class EntityManagerFactoryConfiguration {
 
       // Display Feed Details
       List<Episode> episodes = podcast.getEpisodes();
-      log.info(S_HAS_D_EPISODES, podcast.getTitle(), episodes.size());
+//      log.info(S_HAS_D_EPISODES, podcast.getTitle(), episodes.size());
 
       // List all episodes
       for (Episode episode : episodes) {

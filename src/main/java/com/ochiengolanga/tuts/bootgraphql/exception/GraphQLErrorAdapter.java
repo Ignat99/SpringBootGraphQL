@@ -1,6 +1,7 @@
 package com.ochiengolanga.tuts.bootgraphql.exception;
 
 import graphql.ErrorType;
+//import graphql.ErrorClassification;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
