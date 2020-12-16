@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.time.LocalDate;
@@ -27,7 +27,7 @@ public class ScheduledTasks {
     private NosFeedService feedService;
 
     @Scheduled(initialDelay=10000, fixedRate = 300000)
-    @Transactional(propagation=Propagation.REQUIRES_NEW)
+//    @Transactional(propagation=Propagation.REQUIRES_NEW)
     public void checkRSS() throws InvalidFeedException, MalformedFeedException, MalformedURLException {
 
         System.out.printf("- Time to cheсk\n");
