@@ -45,8 +45,8 @@ Documentation could be reached [HERE](http://localhost:8080/graphiql).
 ## Query
 
 ```sh
-{
-  allFeeds {
+query {
+  feeds(sortBy: "title", count: 4) {
     id
     title
     description
