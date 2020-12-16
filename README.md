@@ -4,9 +4,9 @@ Back End GraphQL server for read RSS based on SpringBoot
 ## Technical Info
 
 The software was built using the following tools/platforms:
-- [IBM cloud](http://75.126.254.59:8080/accounts) - with Linux Ubuntu Operational System
+- [IBM cloud](http://75.126.254.59/) - with Linux Ubuntu Operational System
 - [Java 8](https://www.java.com/pt_BR/) - **THE PROGRAMMING LANGUAGE**
-- [Spring Boot 2.1.0](http://spring.io/projects/spring-boot) - The framework I use every day for building nice applications
+- [Spring Boot 2.1.5.RELEASE](http://spring.io/projects/spring-boot) - The framework I use every day for building nice applications
 - [H2 Database](http://www.h2database.com/html/main.html) - Database that can be used as a library http://75.126.254.59:8080/h2-console/
 - [Lombok](https://projectlombok.org/) - Framework used to reduce boilerplate code
 - [JUnit](https://junit.org/) - Used for tests
