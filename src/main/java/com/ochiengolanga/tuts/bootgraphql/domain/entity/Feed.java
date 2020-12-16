@@ -2,31 +2,21 @@ package com.ochiengolanga.tuts.bootgraphql.domain.entity;
 
 import java.util.Objects;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-//import lombok.AllArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.Data;
-//import lombok.EqualsAndHashCode;
-//import lombok.Builder;
+import lombok.Builder;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import org.hibernate.annotations.DynamicUpdate;
-//import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.NaturalId;
 
 @Data
-//@EqualsAndHashCode
-@Getter
-@Setter
-@ToString
-//@AllArgsConstructor
 //TODO: Need understand why it decorator @NoArgsConstructor not made a default constructor
 @NoArgsConstructor
 @Entity
-//@Builder(toBuilder = true)
+@Builder(toBuilder = true)
 @DynamicUpdate
 public class Feed implements Serializable {
 
@@ -37,7 +27,7 @@ public class Feed implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-//    @NaturalId(mutable = false)
+    @NaturalId(mutable = false)
     @Column(name="feed_title", nullable = false, length = 512)
     private String title;
 
