@@ -46,12 +46,14 @@ Documentation could be reached [HERE](http://localhost:8080/graphiql).
 
 ```sh
 {
-  findAllFeeds {
+  allFeeds {
     id
     title
     description
     pubdate
     image
+    guid
+    link
   }
 }
 ```
@@ -62,7 +64,7 @@ H2 database console http://75.126.254.59:8080/h2-console/
 
 ```sh
 mutation {
-  createFeed(title: "Some News", description: "A and B sit on the tube", itemCount: 3, pubDate: "2016-08-16", image: "https://habrastorage.org/getpro/habr/post_images/5d1/c24/8aa/5d1c248aa840e0955775b7da1eee4595.png") 
+  createFeed(title: "Some News", description: "A and B sit on the tube", itemCount: 3, pubDate: "2016-08-16", image: "https://habrastorage.org/getpro/habr/post_images/5d1/c24/8aa/5d1c248aa840e0955775b7da1eee4595.png", link: "http://link", guid: "aaa") 
   {
     id
   }
