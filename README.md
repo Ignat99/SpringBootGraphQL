@@ -50,7 +50,7 @@ Documentation could be reached [HERE](http://localhost:8080/graphiql).
     id
     title
     description
-    pubdate
+    pubDate
     image
     guid
     link
