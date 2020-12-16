@@ -2,8 +2,11 @@ package com.ochiengolanga.tuts.bootgraphql.domain.entity;
 
 import java.util.Objects;
 
-import lombok.NoArgsConstructor;
+//import lombok.NoArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import lombok.NonNull;
 import lombok.Builder;
 
 import javax.persistence.*;
@@ -13,8 +16,9 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NaturalId;
 
 @Data
+@EqualsAndHashCode(exclude={"title","pubDate","guid","link"})
 //TODO: Need understand why it decorator @NoArgsConstructor not made a default constructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @Entity
 @Builder(toBuilder = true)
 @DynamicUpdate
@@ -29,7 +33,7 @@ public class Feed implements Serializable {
 
     @NaturalId(mutable = false)
     @Column(name="feed_title", nullable = false, length = 512)
-    private String title;
+    @NonNull private String title;
 
     @Column(length = 30000, name="feed_description", nullable = true)
     private String description;
@@ -38,7 +42,7 @@ public class Feed implements Serializable {
     private int itemCount;
 
     @Column(name="feed_pubdate", nullable = true)
-    private String pubDate;
+    @NonNull private String pubDate;
 
     private transient String formattedDate;
 
@@ -46,7 +50,7 @@ public class Feed implements Serializable {
     private String image;
 
     @Column(name="feed_guid", nullable = false, unique = true)
-    private String guid;
+    @NonNull private String guid;
 
     @Column(name="feed_link", nullable = true)
     private String link;
@@ -66,8 +70,9 @@ public class Feed implements Serializable {
     public Feed () {
     }
 
-    // Getter and setter
-//    public String getFormattedDate() {
+    // That is keep for real data format
+    public String getFormattedDate() {
 //        return getPubDate().toString();
-//    }
+        return pubDate;
+    }
 }
