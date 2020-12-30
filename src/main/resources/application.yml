@@ -23,6 +23,10 @@ spring:
     jpa:
         show_sql: true
 
+
+server:
+    port: 8033
+
 #    main:
 #        allow-bean-definition-overriding: true
 

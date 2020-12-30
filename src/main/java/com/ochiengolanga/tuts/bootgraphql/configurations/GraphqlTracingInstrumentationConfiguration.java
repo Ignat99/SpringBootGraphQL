@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-//@Component
+@Component
 @Slf4j(topic = "graphql")
 public class GraphqlTracingInstrumentationConfiguration extends TracingInstrumentation {
 
@@ -29,9 +29,9 @@ public class GraphqlTracingInstrumentationConfiguration extends TracingInstrumen
     private void logTracingResults(InstrumentationExecutionParameters parameters) {
         TracingSupport tracingSupport = parameters.getInstrumentationState();
         Long executionTime = getTime(tracingSupport.snapshotTracingData());
-        if (executionTime != null) {
+//        if (executionTime != null) {
 //            log.debug(String.format("Query (%s) Execution time : %s ms", parameters.getOperation(), executionTime));
-        }
+//        }
     }
 
     private Long getTime(Map<String, Object> tracingData) {

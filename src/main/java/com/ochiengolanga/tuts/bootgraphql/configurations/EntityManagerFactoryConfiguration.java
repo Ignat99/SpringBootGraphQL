@@ -65,6 +65,7 @@ public class EntityManagerFactoryConfiguration {
       }
     };
   }
+
   @Bean
   public FeedQuery query() {
     return new FeedQuery();
